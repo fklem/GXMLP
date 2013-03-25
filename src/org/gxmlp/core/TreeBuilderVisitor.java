@@ -37,7 +37,7 @@ public class TreeBuilderVisitor<T> implements TreeVisitor<T> {
 		}
 	}
 
-	public void enterBranch(T _t) {
+	public boolean enterBranch(T _t) {
 		if (_t != null) {
 			GNode<T> _node = new GNode<T>(_t);
 
@@ -47,7 +47,11 @@ public class TreeBuilderVisitor<T> implements TreeVisitor<T> {
 				currentNode.addChild(_node);
 
 			currentNode = _node;
+			
+			return true;
 		}
+		
+		return false;
 	}
 
 	public void exitBranch(T _t) {

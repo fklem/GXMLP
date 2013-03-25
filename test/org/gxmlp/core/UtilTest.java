@@ -105,8 +105,9 @@ public class UtilTest {
 			}
 
 			@Override
-			public void enterBranch(GNode<XMLNode> _t) {
+			public boolean enterBranch(GNode<XMLNode> _t) {
 				System.out.println("* " + _t.getContents());
+				return true;
 			}
 		};
 
@@ -139,11 +140,12 @@ public class UtilTest {
 					}
 
 					@Override
-					protected void enterLevel(GNode<XMLNode> _t, int _iLevel) {
+					protected boolean enterLevel(GNode<XMLNode> _t, int _iLevel) {
 						System.out.println(this.buildLevelTab(_iLevel) + " "
 								+ _t.getContents().getName() + "   "
 								+ this.buildAttrString(_t.getContents()) + " "
 								+ _t.getContents().getContents());
+						return true;
 					}
 
 					private String buildAttrString(XMLNode _contents) {
@@ -217,7 +219,7 @@ public class UtilTest {
 					}
 
 					@Override
-					public void enterBranch(Node _t) {
+					public boolean enterBranch(Node _t) {
 						if (_t.getNodeType() != Node.TEXT_NODE) {
 							System.out.print(_t.getNodeName() + "  ");
 							if ((_t.getTextContent() != null)
@@ -227,6 +229,7 @@ public class UtilTest {
 
 							System.out.println();
 						}
+						return true;
 					}
 
 					@Override

@@ -29,11 +29,12 @@ public abstract class AbstractTreeNavigator<T1, T2> {
 		if (this.isLeaf(_base))
 			_visitor.visitLeaf(_base);
 		else {
-			_visitor.enterBranch(_base);
-			List<T1> _list = this.getChildren(_base);
+			if (_visitor.enterBranch(_base)) {
+				List<T1> _list = this.getChildren(_base);
 
-			for (T1 t1 : _list) {
-				this.processBranch(t1, _visitor);
+				for (T1 t1 : _list) {
+					this.processBranch(t1, _visitor);
+				}
 			}
 			_visitor.exitBranch(_base);
 		}

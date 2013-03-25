@@ -106,7 +106,8 @@ public class GNodeTreeComparator<T>
 	}
 
 	@Override
-	public void enterBranch(Pair<GNode<T>, GNode<T>> _t) {
+	public boolean enterBranch(Pair<GNode<T>, GNode<T>> _t) {
+		return true;
 	}
 
 	@Override

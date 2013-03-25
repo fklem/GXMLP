@@ -41,15 +41,16 @@ public class FinderTest extends TestCase {
 			}
 		};
 
-		_finder.visit("C:\\DATOS\\CVSDownloadDir", new TreeVisitor<File>() {
+		_finder.visit("/Users/test", new TreeVisitor<File>() {
 
 			public void visitLeaf(File _t) {
 				if (_t.getName().contains("xmlvb"))
 					System.out.println(_t.getAbsolutePath());
 			}
 
-			public void enterBranch(File _t) {
+			public boolean enterBranch(File _t) {
 				System.out.println("enter " + _t.getAbsolutePath());
+				return true;
 			}
 
 			public void exitBranch(File _t) {
@@ -102,9 +103,8 @@ public class FinderTest extends TestCase {
 			}
 
 			@Override
-			public void enterBranch(GNode<File> _t) {
-				// TODO Auto-generated method stub
-
+			public boolean enterBranch(GNode<File> _t) {
+				return true;
 			}
 		});
 	}

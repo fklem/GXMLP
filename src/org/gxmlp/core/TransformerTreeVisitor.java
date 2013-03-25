@@ -33,8 +33,8 @@ public class TransformerTreeVisitor<T1, T2> implements TreeVisitor<T2> {
 	}
 
 	@Override
-	public final void enterBranch(T2 _t) {
-		treeBuilderVisitor.enterBranch(nodeTransformer
+	public final boolean enterBranch(T2 _t) {
+		return treeBuilderVisitor.enterBranch(nodeTransformer
 				.transformEnterBranchNode(_t));
 	}
 

@@ -20,7 +20,7 @@ package org.gxmlp.core;
 public interface TreeVisitor<T> {
 	public void visitLeaf(T _t);
 
-	public void enterBranch(T _t);
+	public boolean enterBranch(T _t);
 
 	public void exitBranch(T _t);
 }

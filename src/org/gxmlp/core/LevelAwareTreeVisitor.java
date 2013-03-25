@@ -21,9 +21,9 @@ public abstract class LevelAwareTreeVisitor<T> implements TreeVisitor<T> {
 	private int iLevel = 0;
 
 	@Override
-	public final void enterBranch(T _t) {
+	public final boolean enterBranch(T _t) {
 		iLevel++;
-		enterLevel(_t, iLevel);
+		return enterLevel(_t, iLevel);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public abstract class LevelAwareTreeVisitor<T> implements TreeVisitor<T> {
 		visitLevel(_t, iLevel);
 	}
 
-	protected abstract void enterLevel(T _t, int _iLevel);
+	protected abstract boolean enterLevel(T _t, int _iLevel);
 
 	protected abstract void visitLevel(T _t, int _iLevel);
 
